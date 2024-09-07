@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <div class="max-w-2xl mx-auto p-6 bg-white shadow-lg mt-10 rounded-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">Add Your Employees</h1>
+        <form method="post" action="/api/addEmployees" class="space-y-4">
+            <div>
+                <label for="first_name" class="block text-sm font-medium text-gray-700">Enter First Name</label>
+                <input type="text" name="first_name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div>
+                <label for="last_name" class="block text-sm font-medium text-gray-700">Enter Last Name</label>
+                <input type="text" name="last_name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div>
+                <label for="empId" class="block text-sm font-medium text-gray-700">Enter Employee ID</label>
+                <input type="text" name="empId" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div>
+                <label for="empDpt" class="block text-sm font-medium text-gray-700">Enter Department</label>
+                <input type="text" name="empDpt" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div>
+                <label for="empSalary" class="block text-sm font-medium text-gray-700">Employee Salary</label>
+                <input type="text" name="empSalary" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div>
+                <button type="submit" class="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200">Submit</button>
+            </div>
+        </form>
+
+        <% if (locals.emp) { %>
+            <div class="mt-10">
+                <% emp.forEach((value) => { %>
+                    <ul class="bg-gray-50 p-4 mb-4 rounded-lg shadow-sm">
+                        <li class="text-gray-700 font-medium">First Name: <%= value.firstName %></li>
+                        <li class="text-gray-700 font-medium">Last Name: <%= value.lastName %></li>
+                        <li class="text-gray-700 font-medium">Employee ID: <%= value.employeeId %></li>
+                        <li class="text-gray-700 font-medium">Department: <%= value.employeeDepartment %></li>
+                        <li class="text-gray-700 font-medium">Salary: <%= value.employeeSalary %></li>
+
+                        <div class="mt-4 space-x-2">
+                            <form method="post" action="/api/deleteEmployee/<%= value._id %>" class="inline">
+                                <button type="submit" class="py-1 px-3 bg-red-600 text-white rounded hover:bg-red-700 transition duration-200">Delete</button>
+                            </form>
+                            <form method="post" action="/update/<%= value._id %>" class="inline">
+                                <button type="submit" class="py-1 px-3 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition duration-200">Update</button>
+                            </form>
+                        </div>
+                    </ul>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+
+</body>
+</html>

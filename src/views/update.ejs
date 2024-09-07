@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="max-w-lg w-full bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-xl font-bold mb-4 text-center">Update Employee</h1>
+        <form method="post" action="/api/updateEmployee/<%= emp._id %>" class="space-y-4">
+            <div>
+                <input name="first_name" placeholder="Enter your first name" value="<%= emp.firstName %>" 
+                       class="block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+            </div>
+            <div>
+                <input name="last_name" placeholder="Enter your last name" value="<%= emp.lastName %>" 
+                       class="block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+            </div>
+            <div>
+                <input name="empId" placeholder="Enter your ID" value="<%= emp.employeeId %>" 
+                       class="block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+            </div>
+            <div>
+                <input name="empDpt" placeholder="Enter your department" value="<%= emp.employeeDepartment %>" 
+                       class="block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+            </div>
+            <div>
+                <input name="empSalary" placeholder="Enter your salary" value="<%= emp.employeeSalary %>" 
+                       class="block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+            </div>
+            <div>
+                <button type="submit" class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

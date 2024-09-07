@@ -11,7 +11,8 @@ async function addEmployee(req,res){
             employeeDepartment:body.empDpt,
             employeeSalary:body.empSalary
      })
-        res.json({msg:"user is created successfully"})
+        res.redirect('/')
      }
+     
 }
 module.exports=addEmployee
